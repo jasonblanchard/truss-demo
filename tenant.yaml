@@ -1,0 +1,13 @@
+---
+apiVersion: truss.bridgeops.sh/v1
+kind: TenantConfig
+metadata:
+  name: truss-demo
+data:
+  applications:
+    - name: api
+      vault:
+        - path: "secret/data/bridge/{env}/{region}/shared/*"
+          capabilities: ["read", "list"]
+        - path: "secret/data/bridge/{env}/{region}/truss-demo/api"
+          capabilities: ["read", "list"]
