@@ -1,0 +1,21 @@
+---
+apiVersion: "rbac.istio.io/v1alpha1"
+kind: ServiceRole
+metadata:
+  name: truss-demo-role
+spec:
+  rules:
+    - services:
+        - truss-demo.truss-demo-edge.svc.cluster.local
+      methods: ["*"]
+---
+apiVersion: "rbac.istio.io/v1alpha1"
+kind: ServiceRoleBinding
+metadata:
+  name: truss-demo-role-binding
+spec:
+  subjects:
+    - user: "*"
+  roleRef:
+    kind: ServiceRole
+    name: truss-demo-role

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: truss-demo
+  labels:
+    app: truss-demo
+spec:
+  selector:
+    app: truss-demo
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 4567

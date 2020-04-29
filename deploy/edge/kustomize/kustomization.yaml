@@ -1,0 +1,13 @@
+namespace: truss-demo-edge
+
+resources:
+  - deployment.yaml
+  - service.yaml
+  - virtualservice.yaml
+  - rbac.yaml
+
+configMapGenerator:
+  - name: truss-demo
+    literals:
+      - RACK_ENV=production
+      - RUN_TRUSS_DEMO=true

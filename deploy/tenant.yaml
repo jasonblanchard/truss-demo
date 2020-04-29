@@ -3,6 +3,8 @@ apiVersion: truss.bridgeops.sh/v1
 kind: TenantConfig
 metadata:
   name: truss-demo
+  labels:
+    istio-injection: enabled
 data:
   applications:
     - name: api

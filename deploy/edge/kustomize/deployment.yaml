@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: truss-demo
+  labels:
+    app: truss-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: truss-demo
+  template:
+    metadata:
+      labels:
+        app: truss-demo
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "true"
+    spec:
+      containers:
+        - name: api
+          image: 127178877223.dkr.ecr.us-east-2.amazonaws.com/truss/truss-demo:4ff48fb915ab2424004689af49dc4eddc023240b
+          ports:
+            - containerPort: 4567
+          envFrom:
+            - configMapRef:
+                name: truss-demo
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 4567
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 4567
