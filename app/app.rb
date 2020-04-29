@@ -18,7 +18,7 @@ class TrussDemo < Sinatra::Base
     unless ENV['RUN_TRUSS_DEMO']
       logger.error("Environment variable RUN_TRUSS_DEMO must be set!")
 
-      exit
+      exit 1
     end
 
     super
