@@ -16,6 +16,7 @@ spec:
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "true"
     spec:
+      serviceAccountName: truss-demo-edge-api
       containers:
         - name: api
           image: 127178877223.dkr.ecr.us-east-2.amazonaws.com/truss/truss-demo:4ff48fb915ab2424004689af49dc4eddc023240b
