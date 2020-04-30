@@ -10,4 +10,4 @@ configMapGenerator:
   - name: truss-demo
     literals:
       - RACK_ENV=production
-      - RUN_TRUSS_DEMO=true
+      #- RUN_TRUSS_DEMO=true
